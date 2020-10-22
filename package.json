@@ -1,0 +1,57 @@
+{
+    "name": "app-hooks",
+    "version": "1.0.0",
+    "description": "React hooks for creating native feels for web",
+    "author": "SaltyAom",
+    "license": "MIT",
+    "repository": "SaltyAom/app-hooks",
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.es.js",
+    "types": "dist/cjs/index.d.ts",
+    "jsnext:main": "dist/esm/index.es.js",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "test": "cross-env CI=1 react-scripts test --env=jsdom",
+        "test:watch": "react-scripts test --env=jsdom",
+        "build": "rollup -c && tsc -d --emitDeclarationOnly --noEmit false --declarationDir dist",
+        "postbuild": "mkdir dist/production && terser dist/cjs/index.js -o dist/production/index.js --compress --mangle",
+        "start": "rollup -c -w",
+        "prepare": "yarn run build",
+        "predeploy": "cd example && yarn install && yarn run build",
+        "deploy": "gh-pages -d example/build"
+    },
+    "dependencies": {},
+    "peerDependencies": {
+        "react": "^16.9.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.2.2",
+        "@babel/runtime": "^7.3.1",
+        "@rollup/plugin-babel": "^5.2.0",
+        "@rollup/plugin-commonjs": "^15.0.0",
+        "@rollup/plugin-node-resolve": "^9.0.0",
+        "@rollup/plugin-typescript": "^5.0.2",
+        "@rollup/plugin-url": "^5.0.1",
+        "@testing-library/react-hooks": "^3.2.1",
+        "@types/jest": "^23.3.13",
+        "@types/react": "^16.7.22",
+        "@typescript-eslint/eslint-plugin": "^4.5.0",
+        "@typescript-eslint/parser": "^4.5.0",
+        "cross-env": "^5.2.0",
+        "eslint": "^7.11.0",
+        "eslint-config-prettier": "^6.13.0",
+        "gh-pages": "^2.0.1",
+        "prettier": "^2.1.2",
+        "react": "^16.9.0",
+        "react-scripts": "^3.4.0",
+        "react-test-renderer": "^16.9.0",
+        "rollup": "^2.26.9",
+        "rollup-plugin-peer-deps-external": "^2.2.0",
+        "terser": "^5.3.7",
+        "tslib": "^2.0.1",
+        "typescript": "^3.2.4"
+    }
+}
