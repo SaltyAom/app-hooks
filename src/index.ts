@@ -18,6 +18,8 @@ declare global {
     }
 }
 
+const isServer = typeof window === 'undefined'
+
 /**
  * React hook for OS native share.
  *
@@ -25,7 +27,7 @@ declare global {
  * @returns {Array.<{share: Function, supportShare: Boolean}>}
  */
 export const useShare: UseShare = (shareData) => {
-    let canShare = 'share' in navigator
+    let canShare = !isServer && 'share' in navigator
 
     let [supportShare, updateSupportShare] = useState(canShare)
 
@@ -98,7 +100,7 @@ export const usePwa: UsePwa = () => {
         window.addEventListener(PageEvent.DOMContentLoaded, detectPwa, {
             once: true
         })
-    }, [window])
+    }, [])
 
     return [isPwa]
 }

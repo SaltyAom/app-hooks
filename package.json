@@ -1,6 +1,6 @@
 {
     "name": "app-hooks",
-    "version": "1.0.0",
+    "version": "0.0.0-experimental-0",
     "description": "React hooks for creating native feels for web",
     "author": "SaltyAom",
     "license": "MIT",
@@ -16,7 +16,7 @@
     "scripts": {
         "test": "cross-env CI=1 react-scripts test --env=jsdom",
         "test:watch": "react-scripts test --env=jsdom",
-        "build": "rollup -c && tsc -d --emitDeclarationOnly --noEmit false --declarationDir dist",
+        "build": "rm -rf dist && rollup -c && tsc -d --emitDeclarationOnly --noEmit false --declarationDir dist",
         "postbuild": "mkdir dist/production && terser dist/cjs/index.js -o dist/production/index.js --compress --mangle",
         "start": "rollup -c -w",
         "prepare": "yarn run build",
